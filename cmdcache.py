@@ -39,7 +39,7 @@ def _load(key):
 
 def _store(key, res):
     with open(key, 'w') as fp:
-        fp.write(res)
+        fp.write(res.encode('utf-8'))
 
 
 def get_cached(cmds):
