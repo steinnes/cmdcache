@@ -39,7 +39,7 @@ def _load(key):
 
 def _store(key, res):
     if sys.version_info[0] == 2:
-        buf = unicode(res).decode('utf-8')
+        buf = unicode(res).encode('utf-8')
     else:
         buf = str(res)
 
