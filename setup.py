@@ -4,7 +4,7 @@ import fastentrypoints
 
 setup(
     name='cmdcache',
-    version='0.2.0',
+    version='0.2.1',
     description='Simple way to run a command and cache the stdout.  Useful for example when caching cmd output in command completion bash scripts.',
     url='https://github.com/steinnes/cmdcache',
     author='Steinn Eldjarn Sigurdarson',
