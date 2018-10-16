@@ -38,8 +38,14 @@ def _load(key):
 
 
 def _store(key, res):
+    if sys.version_info[0] == 2:
+        buf = unicode(res).decode('utf-8')
+    else:
+        buf = str(res)
+
     with open(key, 'w') as fp:
-        fp.write(res.encode('utf-8'))
+        fp.write(buf)
+    return buf
 
 
 def get_cached(cmds):
@@ -53,20 +59,18 @@ def get_cached(cmds):
             res = cmd(cmds[1:])
         else:
             res = cmd()
-        res = unicode(res)
-        _store(key, res)
-        return res
+        return _store(key, res)
     return stored
 
 
 def main():
     if len(sys.argv) < 2:
-        print "Usage: {} <normal command here>".format(os.path.basename(sys.argv[0]))
-        print ""
-        print "Control behaviour with env vars:"
-        print ""
-        print "CMDCACHE_MAX_AGE (age in seconds)"
-        print "CMDCACHE_PREFIX (defaults to /tmp/cmdcache.)"
+        print("Usage: {} <normal command here>".format(os.path.basename(sys.argv[0])))
+        print("")
+        print("Control behaviour with env vars:")
+        print("")
+        print("CMDCACHE_MAX_AGE (age in seconds)")
+        print("CMDCACHE_PREFIX (defaults to /tmp/cmdcache.)")
         sys.exit(1)
     sys.stdout.write(get_cached(sys.argv[1:]))
 
