@@ -12,8 +12,15 @@ setup(
     keywords=['cache', 'cli', 'output'],
     install_requires=["sh==1.11"],
     py_modules=['cmdcache'],
+    classifiers=[
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+    ],
     entry_points='''
         [console_scripts]
         cmdcache=cmdcache:main
-    '''
+    ''',
 )
