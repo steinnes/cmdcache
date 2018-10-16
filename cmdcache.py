@@ -38,8 +38,14 @@ def _load(key):
 
 
 def _store(key, res):
+    if sys.version_info[0] == 2:
+        buf = unicode(res).decode('utf-8')
+    else:
+        buf = str(res)
+
     with open(key, 'w') as fp:
-        fp.write(res.encode('utf-8'))
+        fp.write(buf)
+    return buf
 
 
 def get_cached(cmds):
@@ -53,9 +59,7 @@ def get_cached(cmds):
             res = cmd(cmds[1:])
         else:
             res = cmd()
-        res = str(res)
-        _store(key, res)
-        return res
+        return _store(key, res)
     return stored
 
 
