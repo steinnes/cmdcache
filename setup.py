@@ -10,7 +10,7 @@ setup(
     author='Steinn Eldjarn Sigurdarson',
     author_email='steinnes@gmail.com',
     keywords=['cache', 'cli', 'output'],
-    install_requires=["sh==1.11"],
+    install_requires=["sh==2.2.4"],
     py_modules=['cmdcache'],
     classifiers=[
         'Programming Language :: Python :: 2',
